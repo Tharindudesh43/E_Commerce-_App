@@ -18,7 +18,7 @@ class MainProductCard extends StatelessWidget {
                 child: Image.network(
                   "https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                   width: 200,
-                  height: 350,
+                  height: 300,
                   fit: BoxFit.cover,
                 )),
             const Text("Women Blouse"),

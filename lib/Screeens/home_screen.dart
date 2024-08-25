@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/services/api_service.dart';
 import 'package:e_commerce_app/widgets/Category_Slider.dart';
 import 'package:e_commerce_app/widgets/main_product_card.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Column(
         children: [
           const Padding(
@@ -42,7 +43,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-          )
+          ),
+          TextButton(
+              onPressed: () {
+                ApiService.getCategories();
+              },
+              child: Text("Get Categories")),
+          TextButton(
+              onPressed: () {
+                ApiService.getProsuctsById(productId: "1");
+              },
+              child: Text("Get Products By ID"))
         ],
       ),
     );
