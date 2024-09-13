@@ -1,28 +1,38 @@
 import 'package:flutter/material.dart';
 
 class MainProductCard extends StatelessWidget {
-  const MainProductCard({
-    super.key,
-  });
+  const MainProductCard(
+      {super.key,
+      required this.title,
+      required this.price,
+      required this.image});
+
+  final String title;
+  final String price;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 8),
+      padding: EdgeInsets.only(right: 15),
       child: Container(
+        padding: EdgeInsets.only(right: 10.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
                 borderRadius: BorderRadius.circular(25),
                 child: Image.network(
-                  "https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                  image,
                   width: 200,
-                  height: 300,
-                  fit: BoxFit.cover,
+                  height: 260,
+                  //fit: BoxFit.cover,
                 )),
-            const Text("Women Blouse"),
-            const Text("\$10.00"),
+            SizedBox(width: 150, child: Text(title)),
+            Text(
+              "\$$price",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
           ],
         ),
       ),
