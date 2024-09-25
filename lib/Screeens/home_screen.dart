@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/models/product.dart';
 import 'package:e_commerce_app/services/api_service.dart';
 import 'package:e_commerce_app/widgets/Category_Slider.dart';
 import 'package:e_commerce_app/widgets/main_product_card.dart';
@@ -121,19 +122,21 @@ class _HomeScreenState extends State<HomeScreen> {
                       return const Center(
                         child: CircularProgressIndicator(),
                       );
-                    } else {
-                      List allproducts = snap.data!;
+                    } else if (snap.hasData) {
+                      List<Product> allproducts = snap.data!;
                       return SizedBox(
                         height: 380,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: allproducts.length,
                           itemBuilder: (context, index) => MainProductCard(
-                              title: allproducts[index]["title"],
-                              price: allproducts[index]["price"].toString(),
-                              image: allproducts[index]["image"]),
+                              title: allproducts[index].title!,
+                              price: allproducts[index].price.toString(),
+                              image: allproducts[index].image!),
                         ),
                       );
+                    } else {
+                      return const Center(child: Text("Somehting went wrong"));
                     }
                   },
                 ),

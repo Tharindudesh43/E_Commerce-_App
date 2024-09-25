@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:e_commerce_app/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -11,11 +12,17 @@ class ApiService {
     return categoryList;
   }
 
-  static Future<List> getProsucts() async {
+  static Future<List<Product>> getProsucts() async {
     var url = Uri.https('fakestoreapi.com', 'products');
     var response = await http.get(url);
-    List products = jsonDecode(response.body);
-    return products;
+    List<Map<String, dynamic>> jsonproducts = jsonDecode(response.body);
+    List<Product>? products = [];
+
+    for (var item in jsonproducts) {
+      products!.add(Product.fromJson(item));
+    }
+    print(products);
+    return products!;
   }
 
   static getProsuctsById({required String productId}) async {
