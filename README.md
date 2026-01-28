@@ -14,3 +14,31 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+TextField(
+  maxLines: 1, // single line only
+  cursorColor: Colors.green,
+  style: const TextStyle(
+    color: Colors.green, // text color (optional)
+    fontSize: 16,
+  ),
+  decoration: InputDecoration(
+    hintText: "Enter text",
+    hintStyle: const TextStyle(color: Colors.green),
+
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: const BorderSide(
+        color: Colors.green,
+        width: 3, // increase line width here
+      ),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: const BorderSide(
+        color: Colors.green,
+        width: 3, // increase line width here too
+      ),
+    ),
+  ),
+)
